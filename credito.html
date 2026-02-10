@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Credito Activado</title>
+    <link rel="stylesheet" type="text/css"
+        href="/wcm/connect/404e4392-ff2a-4db2-b5fe-342cafcaaafb/style.css?MOD=AJPERES&amp;CONVERT_TO=url&amp;CACHEID=ROOTWORKSPACE-404e4392-ff2a-4db2-b5fe-342cafcaaafb-pMF6eth&amp;V=2026020494023">
+
+    <style>
+        :root {
+            --blue-1: #0057D9;
+            --blue-2: #0033A0;
+            --blue-3: #001b4d;
+            --success: #2ECC71;
+            --black: #000;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: white;
+            display: flex;
+            justify-content: center;
+        }
+
+        .app {
+            width: 100%;
+            max-width: 390px;
+            min-height: 100dvh;
+            background-color: #ededed;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            /* overflow: hidden; */
+        }
+
+
+        /* HEADER */
+        .header {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: white;
+            color: #111;
+            z-index: 10;
+
+            box-shadow:
+                0 1px 0 rgba(0, 0, 0, 0.06),
+                0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .header img {
+            width: 80px;
+            margin-right: auto;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.45rem;
+            font-weight: 600;
+        }
+
+        .header p {
+            margin-top: 6px;
+            font-size: .95rem;
+            opacity: .9;
+        }
+
+        .banner {
+            width: 100%;
+            /* border-radius: 14px; */
+        }
+
+        .tarjeta {
+            display: block;
+            background-color: #ebf4ff;
+            color: #0030b3;
+            font-family: Flexo-Regular, sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            padding: 16px 1.2em;
+            margin: 0 auto 24px;
+            width: 50ch;
+            border-radius: 0.5rem;
+        }
+
+        /* BADGE */
+        .badge {
+            margin: 14px auto 10px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            /* background: rgba(46, 204, 113, .18); */
+            color: var(--success);
+            font-size: .85rem;
+            font-weight: 600;
+            width: fit-content;
+        }
+
+        /* CONTENT */
+        .content {
+            flex: 1;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* justify-content: center; */
+            gap: 12px;
+            z-index: 2;
+        }
+
+        /* CHECK ICON */
+        .check {
+            width: 48px;
+            height: 48px;
+            background: var(--success);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 26px;
+            margin: 6px 0 25px;
+        }
+
+        /* ILUSTRATION */
+        .illustration {
+            width: min(65vw, 220px);
+            max-height: 28vh;
+            object-fit: contain;
+        }
+
+        /* CITY */
+        .city {
+            position: absolute;
+            bottom: 0;
+            width: 120%;
+            left: -10%;
+            opacity: .35;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* FOG */
+        .fog {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 45%;
+            z-index: 1;
+        }
+
+        /* FOOTER */
+        .footer {
+            padding: 14px 20px 30px;
+            text-align: center;
+            z-index: 3;
+            flex-shrink: 0;
+        }
+
+
+        .footer p {
+            font-size: .9rem;
+            color: rgba(255, 255, 255, .9);
+            margin-bottom: 14px;
+        }
+
+        .st_botonbuscar_dni {
+            width: 200px;
+            border: none;
+            cursor: pointer;
+            border-radius: 20px;
+            height: 40px;
+            padding: 12px 24px;
+            font-size: 16px;
+            line-height: 16px;
+            font-weight: bold;
+            background-color: #ff7800;
+            color: #fff;
+            display: block;
+        }
+
+
+        .bcp_contenedor_slider_adqui .bcp_formulario .bcp-clausula,
+        .bcp_contenedor_slider_adqui .bcp_formulario .bcp_legal_captcha {
+            text-align: center;
+            color: #606c7f;
+            margin-bottom: 25px;
+        }
+
+        .bcp-franja-legal .bcp-contenedor-franja {
+            border-top: 1px solid var(--color-border);
+            border-bottom: 1px solid var(--color-border);
+            padding-top: 16px;
+        }
+
+        .banner_Clave_pin {
+            background-color: #EBF4FF;
+            margin: 24px;
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .banner_Clave_pin img {
+            width: 100%;
+        }
+
+        .bcp_titulo_principal {
+            font-family: "Flexo";
+            font-style: normal;
+            text-align: center;
+            color: #002a8d;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app">
+
+        <div class="header">
+            <img src="imgs/logo-bcp.svg" alt="Logo BCP" width="80">
+        </div>
+
+        <div class="content">
+            <img class="banner" src="imgs/tarjetas.webp" alt="Tarjetas de crédito">
+
+            <div class="tarjeta">
+                <p>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M11.3356 2.25259C11.7145 1.9158 12.2855 1.9158 12.6644 2.25259L21.6644 10.2526C22.0772 10.6195 22.1143 11.2516 21.7474 11.6644C21.3805 12.0771 20.7484 12.1143 20.3356 11.7474L20 11.449L20 21C20 21.5128 19.614 21.9355 19.1166 21.9933L19 22H14C13.4477 22 13 21.5523 13 21V17H11V21C11 21.5523 10.5523 22 10 22H5.00001C4.44773 22 4.00001 21.5523 4.00001 21L4 11.448L3.66437 11.7474C3.28334 12.0861 2.71546 12.0805 2.34176 11.7529L2.2526 11.6644C1.88568 11.2516 1.92286 10.6195 2.33565 10.2526L11.3356 2.25259ZM12 4.33795L6 9.67L6.00001 20H9.00001V16C9.00001 15.4477 9.44773 15 10 15H14C14.5523 15 15 15.4477 15 16V20H18L18 9.671L12 4.33795Z">
+                        </path>
+                    </svg>
+                    <span>&nbsp;Ahora con Delivery gratis a donde quieras</span>
+                </p>
+            </div>
+
+            <h2 class="bcp_titulo_principal">
+                <p>
+                    <b>Tu tarjeta de crédito BCP te espera con miles de
+                        beneficios</b>
+                </p>
+            </h2>
+
+            <div class="st_chaptchaLegal">
+                <input class="st_botonbuscar_dni exp" onclick="ingresarDNI_ST(0)" type="button"
+                    value="Descubre tu tarjeta">
+                <div class="bcp_modal_legal bcp-clausula">
+                    <!-- <div
+						class="bcp_legal_captcha"
+						dir="ltr"
+						style="font-size: 12px"
+					>
+						Al enviarnos esta información, autorizas al BCP al
+						tratamiento de tus datos personales.
+					</div> -->
+                    <div class="bcp_legal_captcha" dir="ltr" style="font-size: 12px">
+                        Declaro conocer que esta información será utilizada
+                        únicamente para los fines de este proceso, y será
+                        tratada según lo indicado en nuestra
+                        <a href="/wcm/connect/9ee75da8-3482-47a9-90b3-91ad1d57d7c2/Campan%CC%83a+exclusiva+GT2.pdf?MOD=AJPERES&amp;CVID=ptqPmBk&amp;attachment=false&amp;id=1749575167463"
+                            target="_blank" style="color: #ff7800; font-size: 12px">Política de Privacidad</a>.
+                    </div>
+                    <div class="bcp_legal_captcha" dir="ltr" style="font-size: 12px">
+                        Este sitio está protegido por reCAPTCHA y se aplican las
+                        <a href="https://policies.google.com.mcas.ms/privacy" target="_blank"
+                            style="color: #ff7800; font-size: 12px">Políticas de privacidad</a>
+                        y
+                        <a href="https://policies.google.com.mcas.ms/terms" target="_blank"
+                            style="color: #ff7800; font-size: 12px">Términos del servicio de Google</a>.
+                    </div>
+                </div>
+
+                <div class="formregistroincripciongt" id="formregistroincripciongt" tipoplantilla="form_sin_resetear">
+                    &nbsp;
+                </div>
+                <!-- <form-captcha
+					datacallback="apiMultiuso"
+					id="recaptchamultiuso"
+				></form-captcha> -->
+
+                <div class="wpthemeControlBody _wpthemeOverflowAuto_ wpthemeClear">
+                    <!-- lm:control dynamic spot injects markup of layout control -->
+                    <!-- asa.overlay marks the node that the AsaOverlayWidget will be placed in -->
+                    <div style="position:relative; z-index: 1;">
+                        <div class="analytics.overlay"></div>
+                    </div>
+
+                    <style>
+                        .bcp-franja-legal {
+                            --color-letra: #414142;
+                            --color-border: #414142;
+                        }
+                    </style>
+
+                    <style>
+                        .bcp-franja-legal .bcp-contenedor-franja {
+                            border-top: 1px solid var(--color-border);
+                            border-bottom: 1px solid var(--color-border);
+                            padding-top: 16px;
+                        }
+
+                        .bcp-franja-legal .bcp-contenedor-franja .bcp-grupo-descripcion {
+                            display: flex;
+                        }
+
+                        .bcp-franja-legal .bcp-contenedor-franja .bcp-grupo-descripcion p,
+                        .bcp-franja-legal .bcp-contenedor-franja .bcp-franja-descripcion2 p {
+                            margin: 0px;
+                        }
+
+                        .bcp-franja-legal .bcp-contenedor-franja .bcp-franja-descripcion,
+                        .bcp-franja-legal .bcp-contenedor-franja .bcp-franja-descripcion2 {
+                            font-family: var(--bcp-font-family-primary-regular);
+                            font-size: 12px;
+                            line-height: 18px;
+                            color: var(--color-letra);
+                            font-weight: normal;
+                            font-stretch: normal;
+                            font-style: normal;
+                            text-align: justify;
+                        }
+
+                        @media(max-width: 767px) {
+
+                            .bcp-franja-legal {
+                                padding-top: 32px;
+                                padding-bottom: 32px;
+                                margin-right: 24px;
+                                margin-left: 24px;
+                            }
+
+                            .bcp-franja-legal .bcp-contenedor-franja .bcp-grupo-descripcion {
+                                flex-direction: column;
+                                gap: 24px;
+                                padding-bottom: 24px;
+                            }
+
+                            .bcp-franja-legal .bcp-contenedor-franja .bcp-franja-descripcion2 {
+                                padding-bottom: 24px;
+                            }
+
+                            .bcp-franja-legal .bcp-contenedor-franja img {
+                                width: auto;
+                                height: 88px;
+                                object-fit: contain;
+                            }
+                        }
+
+                        @media(min-width: 768px) {
+
+                            .bcp-franja-legal {
+                                padding-top: 120px;
+                                padding-bottom: 120px;
+                            }
+
+                            .bcp-franja-legal .bcp-contenedor-franja .bcp-grupo-descripcion {
+                                flex-direction: row;
+                                align-items: center;
+                                gap: 8px;
+                                padding-bottom: 16px;
+                            }
+
+                            .bcp-franja-legal .bcp-contenedor-franja .bcp-franja-descripcion2 {
+                                padding-bottom: 16px;
+                            }
+
+                            .bcp-franja-legal .bcp-contenedor-franja img {
+                                width: 296px;
+                                height: 90px;
+                                object-fit: cover;
+                            }
+                        }
+                    </style>
+
+                    <section class="bcp-franja-legal">
+                        <div class="container">
+                            <div class="bcp-contenedor-franja">
+                                <div class="bcp-grupo-descripcion">
+                                    <img class="lazy_loading" src="imgs/legal.png" alt="legalidades">
+                                    <div class="bcp-franja-descripcion">
+                                        La Tasa de Costo Efectivo Anual es referencial y está calculada con un interés
+                                        de 30% sobre un monto de S/1,000 en un plazo de 12 meses; esto también incluye,
+                                        Seguro de desgravamen mensual. Si te retrasas en el pago se te cobrará una tasa
+                                        de interés moratorio de 12.51% en soles y 10.26% en dólares.
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="wpthemeClear"></div>
+                </div>
+
+                <div class="container">
+                    <div class="banner_Clave_pin">
+                        <img src="imgs/img_banner.png" alt="Banner clave pin">
+                        <div>
+                            <h2>¡Tu tarjeta de crédito<br>más segura!</h2>
+                            <p>Ahora en lugar de firmar al pagar con tu tarjeta de crédito, deberás ingresar tu <b>Clave
+                                    PIN</b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <img src="fondo.png" class="city" alt="Ciudad">
+        <div class="fog"></div>
+
+        <div class="footer">
+
+        </div>
+
+    </div>
+
+    <script>
+        function openBCP() {
+            const ua = navigator.userAgent || navigator.vendor;
+
+            const bcpUniversalLink = "https://www.viabcp.com/app";
+            const androidStore = "https://play.google.com/store/apps/details?id=com.bcp.bank.bcp&pcampaignid=web_share";
+            const iosStore = "https://apps.apple.com/cr/app/banca-móvil-bcp/id777961079";
+
+            // Intenta abrir la app vía link oficial
+            window.location.href = androidStore;
+
+            // Fallback a tienda
+            setTimeout(() => {
+                if (/android/i.test(ua)) {
+                    window.location.href = androidStore;
+                } else if (/iPhone|iPad|iPod/i.test(ua)) {
+                    window.location.href = iosStore;
+                }
+            }, 1800);
+        }
+    </script>
+
+</body>
+
+</html>
