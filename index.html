@@ -37,9 +37,9 @@
     }
 
     .app {
-      width: 100dvh;
+      width: 100%;
       max-width: 390px;
-      height: 100vh;
+      min-height: 100dvh;
       background: linear-gradient(180deg,
           var(--blue-1) 0%,
           var(--blue-2) 35%,
@@ -49,6 +49,7 @@
       position: relative;
       overflow: hidden;
     }
+
 
     /* HEADER */
     .header {
@@ -85,11 +86,12 @@
     /* CONTENT */
     .content {
       flex: 1;
+      min-height: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      position: relative;
+      gap: 12px;
       z-index: 2;
     }
 
@@ -109,10 +111,9 @@
 
     /* ILUSTRATION */
     .illustration {
-      width: min(60vw, 220px);
-      max-height: 35vh;
+      width: min(65vw, 220px);
+      max-height: 28vh;
       object-fit: contain;
-      margin-top: 0;
     }
 
     /* CITY */
@@ -140,11 +141,12 @@
 
     /* FOOTER */
     .footer {
-      padding: 16px 20px 24px;
+      padding: 14px 20px 18px;
       text-align: center;
       z-index: 3;
       flex-shrink: 0;
     }
+
 
     .footer p {
       font-size: .9rem;
@@ -161,6 +163,37 @@
       color: var(--blue-2);
       font-weight: 600;
       font-size: .95rem;
+    }
+
+    @media (max-height: 650px) {
+      .header {
+        padding: 18px 16px 6px;
+      }
+
+      .header h1 {
+        font-size: 1.25rem;
+      }
+
+      .badge {
+        margin: 8px auto;
+        font-size: .75rem;
+      }
+
+      .check {
+        margin-bottom: 10px;
+      }
+
+      .illustration {
+        max-height: 22vh;
+      }
+
+      .footer p {
+        font-size: .8rem;
+      }
+
+      .button {
+        padding: 12px;
+      }
     }
   </style>
 </head>
@@ -197,7 +230,7 @@
       const ua = navigator.userAgent || navigator.vendor;
 
       const bcpUniversalLink = "https://www.viabcp.com/app";
-      const androidStore = "https://play.google.com/store/apps/details?id=com.viabcp.bcp";
+      const androidStore = "https://play.google.com/store/apps/details?id=com.bcp.bank.bcp&pcampaignid=web_share";
       const iosStore = "https://apps.apple.com/pe/app/banca-m%C3%B3vil-bcp/id777961277";
 
       // Intenta abrir la app vía link oficial
