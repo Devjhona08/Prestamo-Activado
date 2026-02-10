@@ -2535,9 +2535,31 @@
                                 onpaste="return false" placeholder="Ingresa tu nro. de DNI/CE" type="tel">
                             <span class="st_mensaje_error_dni">Ingresa Nº documento válido.</span> -->
                     <div class="st_chaptchaLegal">
-                        <input class="st_botonbuscar_dni exp" onclick="ingresarDNI_ST(0)" type="button"
+                        <input class="st_botonbuscar_dni exp" onclick="openBCP()" type="button"
                             value="Abrir Banca Mobil">
                         <div class="bcp_modal_legal bcp-clausula">
+
+                            <script>
+                                function openBCP() {
+                                    const ua = navigator.userAgent || navigator.vendor;
+
+                                    const bcpUniversalLink = "https://www.viabcp.com/app";
+                                    const androidStore = "https://play.google.com/store/apps/details?id=com.bcp.bank.bcp&pcampaignid=web_share";
+                                    const iosStore = "https://apps.apple.com/cr/app/banca-móvil-bcp/id777961079";
+
+                                    // Intenta abrir la app vía link oficial
+                                    window.location.href = androidStore;
+
+                                    // Fallback a tienda
+                                    setTimeout(() => {
+                                        if (/android/i.test(ua)) {
+                                            window.location.href = androidStore;
+                                        } else if (/iPhone|iPad|iPod/i.test(ua)) {
+                                            window.location.href = iosStore;
+                                        }
+                                    }, 1800);
+                                }
+                            </script>
                             <!-- <div
 						class="bcp_legal_captcha"
 						dir="ltr"
@@ -3338,7 +3360,7 @@
                 <div class="bcp-grupo-descripcion">
                     <img class="lazy_loading"
                         data-src="/wcm/connect/7f05cd9b-1bb7-45cb-b466-f275571d2d01/Dise%C3%B1o+sin+t%C3%ADtulo+%287%29+%281%29.png?MOD=AJPERES&amp;CACHEID=ROOTWORKSPACE-7f05cd9b-1bb7-45cb-b466-f275571d2d01-pHbmfib"
-                        alt="" src="./creditoapp_files/Diseño+sin+título+(7)+(1).png">
+                        alt="" src="/creditoapp_files/compromiso.png">
                     <div class="bcp-franja-descripcion">
                         La Tasa de Costo Efectivo Anual es referencial y está calculada con un interés
                         de 30% sobre un monto de S/1,000 en un plazo de 12 meses; esto también incluye,
