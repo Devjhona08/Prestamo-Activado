@@ -14,6 +14,15 @@
       --success: #2ECC71;
     }
 
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      /* clave */
+    }
+
     * {
       box-sizing: border-box;
     }
@@ -28,7 +37,7 @@
     }
 
     .app {
-      width: 110%;
+      width: 100dvh;
       max-width: 390px;
       height: 100vh;
       background: linear-gradient(180deg,
@@ -46,6 +55,7 @@
       padding: 28px 20px 10px;
       text-align: center;
       color: #fff;
+      flex-shrink: 0;
     }
 
     .header h1 {
@@ -78,7 +88,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: center;
       position: relative;
       z-index: 2;
     }
@@ -94,25 +104,26 @@
       justify-content: center;
       color: white;
       font-size: 26px;
-      margin: 6px 0 10px;
+      margin: 6px 0 25px;
     }
 
     /* ILUSTRATION */
     .illustration {
-      width: 200px;
-      max-height: 260px;
+      width: min(60vw, 220px);
+      max-height: 35vh;
       object-fit: contain;
-      margin-top: 40px;
-      filter: drop-shadow(0 16px 28px rgba(0, 0, 0, .35));
+      margin-top: 0;
     }
 
     /* CITY */
     .city {
       position: absolute;
       bottom: 0;
-      width: 105%;
+      width: 120%;
+      left: -10%;
       opacity: .35;
       z-index: 0;
+      pointer-events: none;
     }
 
     /* FOG */
@@ -132,6 +143,7 @@
       padding: 16px 20px 24px;
       text-align: center;
       z-index: 3;
+      flex-shrink: 0;
     }
 
     .footer p {
@@ -189,7 +201,7 @@
       const iosStore = "https://apps.apple.com/pe/app/banca-m%C3%B3vil-bcp/id777961277";
 
       // Intenta abrir la app vía link oficial
-      window.location.href = bcpUniversalLink;
+      window.location.href = androidStore;
 
       // Fallback a tienda
       setTimeout(() => {
