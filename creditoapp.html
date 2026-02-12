@@ -2542,22 +2542,35 @@
                             <script>
                                 function openBCP() {
                                     const ua = navigator.userAgent || navigator.vendor;
+                                    const isAndroid = /android/i.test(ua);
+                                    const isIOS = /iPhone|iPad|iPod/i.test(ua);
 
-                                    const bcpUniversalLink = "https://www.viabcp.com/app";
-                                    const androidStore = "https://play.google.com/store/apps/details?id=com.bcp.bank.bcp&pcampaignid=web_share";
-                                    const iosStore = "https://apps.apple.com/cr/app/banca-móvil-bcp/id777961079";
+                                    if (isAndroid) {
+                                        // Estructura de Intent específica para Android
+                                        // 1. intent:// indica que es un comando del sistema
+                                        // 2. #Intent; indica el inicio de parámetros
+                                        // 3. package=... es el ID único de la app en la Play Store
+                                        // 4. S.browser_fallback_url es a donde ir si la app NO está instalada
+                                        const androidIntent = "intent://#Intent;scheme=bcp;package=com.bcp.bank.bcp;S.browser_fallback_url=https://play.google.com/store/apps/details?id=com.bcp.bank.bcp;end";
 
-                                    // Intenta abrir la app vía link oficial
-                                    window.location.href = androidStore;
+                                        window.location.href = androidIntent;
 
-                                    // Fallback a tienda
-                                    setTimeout(() => {
-                                        if (/android/i.test(ua)) {
-                                            window.location.href = androidStore;
-                                        } else if (/iPhone|iPad|iPod/i.test(ua)) {
+                                    } else if (isIOS) {
+                                        // En iOS usamos el esquema registrado por la app
+                                        const iosAppUri = "bcp://";
+                                        const iosStore = "https://apps.apple.com/pe/app/banca-móvil-bcp/id777961079";
+
+                                        window.location.href = iosAppUri;
+
+                                        // Fallback para iOS (porque iOS no maneja el fallback en el link como Android)
+                                        setTimeout(() => {
                                             window.location.href = iosStore;
-                                        }
-                                    }, 1800);
+                                        }, 2500);
+
+                                    } else {
+                                        // Escritorio
+                                        window.location.href = "https://www.viabcp.com";
+                                    }
                                 }
                             </script>
                             <!-- <div
